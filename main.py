@@ -12,6 +12,7 @@ def choose_random_word():
             return None
 
         word = random.choice(longWords)
+        word.lower()
         return word
     print(f"List of words imported successfully")
 
@@ -25,30 +26,25 @@ def start_game():
     print(f"Number of letters in the word: {letterCount}")
     print("_ " * letterCount)
 
-def validate_input(input):
+def validate_input(input1):
     if len(input1) == 1:
         if input1.isalpha():
-            validLetter = input1
-            return validLetter
+            return input1
+        else: 
+            print(f"Please input a single letter of the alphabet")
     else: 
         print(f"Please input a single letter of the alphabet")
 
-def ask_input():
-    return 
-
 def main():
+    playing = True
     start_game()
 
+    while playing:
+        print(f"Enter a letter:")
+        user_input = input()
+        input1 = user_input.lower()
+        validate_input(input1)
 
-#wait for user input
-print(f"Enter a letter:")
-input1 = input()
-validate_input(input1)
-# input has to be validated: can only be 1 single letter. no numbers. no special character.
-# input also has to be not case sensitive. a = A
+    playing = False
 
-# then there has to be some loop
-#user has to get feedback whether the game accepted some letter or if a heart was removed
-
-print(f"You entered this letter: " + input1)
-# after user input either 1) remove a heart 2) uncover ALL the spaces with the correctly guessed letter
+main()
