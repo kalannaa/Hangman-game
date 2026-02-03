@@ -25,12 +25,25 @@ def start_game():
     print(f"Number of letters in the word: {letterCount}")
     print("_ " * letterCount)
 
+def validate_input(input):
+    if len(input1) == 1:
+        if input1.isalpha():
+            validLetter = input1
+            return validLetter
+    else: 
+        print(f"Please input a single letter of the alphabet")
 
-start_game()
+def ask_input():
+    return 
+
+def main():
+    start_game()
+
 
 #wait for user input
 print(f"Enter a letter:")
 input1 = input()
+validate_input(input1)
 # input has to be validated: can only be 1 single letter. no numbers. no special character.
 # input also has to be not case sensitive. a = A
 
