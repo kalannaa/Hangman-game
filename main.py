@@ -19,12 +19,15 @@ def choose_random_word():
 # add as many empty spaces as letters in the selected word
 def start_game(): 
     print(f"Welcome to this game of Hangman!")
-
-    livesRemaining = 8
     selectedWord = choose_random_word()
     letterCount = len(selectedWord)
     print(f"Number of letters in the word: {letterCount}")
-    print("_ " * letterCount)
+    #print("_ " * letterCount)
+    wordArray = list(selectedWord)
+    emptyWord = ["_"] * len(selectedWord)
+    print(" ".join(emptyWord))
+    print(" ".join(wordArray))
+    return selectedWord
 
 def validate_input(input1):
     if len(input1) == 1:
@@ -37,14 +40,22 @@ def validate_input(input1):
 
 def main():
     playing = True
-    start_game()
+    selectedWord = start_game()
+    livesRemaining = 8
 
     while playing:
         print(f"Enter a letter:")
         user_input = input()
         input1 = user_input.lower()
         validate_input(input1)
+        if input1 in selectedWord:
+            print(f"Letter found!")
 
+        else: #FIX NEEDED: life is removed even when the input is invalid (ie a number)
+            livesRemaining = livesRemaining - 1
+            print(f"Letter not found :( Remaining lives: {livesRemaining}")
+
+    #FIX NEEDED: print array after each user input!! (now it just asks for a letter)
     playing = False
 
 main()
